@@ -15,7 +15,6 @@ class BlogService {
   };
   find = async () => {
     const result = await Blogs.find({});
-    console.log(result);
     return result;
   };
   create = async (e) => {

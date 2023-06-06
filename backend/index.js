@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
 const bookRoutes = require("./routes/books.routes");
 const { authMiddleware } = require("./middleware/auth.middleware");
@@ -22,7 +23,7 @@ mongoose
   });
 
 app.use(express.json());
-
+app.use(cors());
 app.use(authMiddleware);
 
 app.use("/blogs", bookRoutes);
