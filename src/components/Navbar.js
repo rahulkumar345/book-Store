@@ -25,14 +25,22 @@ const Navbar = () => {
             to="/"
           >
             <img src={bookTemplate} alt="Book Store App" height="100px" />
-            Book Store
+            <span
+              style={{
+                fontWeight: 500,
+                fontSize: "2rem",
+                fontFamily: "Source Code Pro, monospace",
+              }}
+            >
+              Book Store
+            </span>
           </Link>
         </div>
 
         {showSearch && <Search />}
 
-        <div className="d-flex align-items-center mt-3 mt-md-0">
-          <nav className="ml-auto">
+        <div className="d-flex flex-column flex-md-row align-items-center mt-3 mt-md-0">
+          <nav className="ml-auto mb-3 mb-md-0">
             <Link
               className="nav-link text-dark"
               style={{

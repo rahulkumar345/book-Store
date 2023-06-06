@@ -33,21 +33,25 @@ export default (state, action) => {
         ...state,
         carts: [...carts],
       };
-    case "GET_BOOKS":
+
+    case "FETCH_BOOKS": // Updated case for fetching books
       return {
         ...state,
-        books: action.payload,
+        books: [...state.books, ...action.payload],
       };
+
     case "REMOVE_CART":
       return {
         ...state,
         carts: state.carts.filter((cart) => cart.id !== action.payload),
       };
+
     case "GET_SEARCHED_STRING":
       return {
         ...state,
         searchString: action.payload.trim() === "" ? null : action.payload,
       };
+
     case "GET_SEARCHED_BOOKS":
       const reg = new RegExp(`${action.payload}`, "gi");
       const searchedBooks = state.books.filter((book) => reg.test(book.title));

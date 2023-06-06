@@ -1,11 +1,10 @@
 import React, { createContext, useReducer, useEffect } from "react";
-import books from "../data/books.json";
 import reducer from "./Reducer";
 
 const initialState = {
-  books: books,
+  books: [],
   searchString: null,
-  searchedBooks: books,
+  searchedBooks: [],
   carts: [],
 };
 
@@ -25,14 +24,19 @@ export const Provider = ({ children }) => {
       method: "GET",
       headers: headers,
     };
-    const result = await fetch(
-      "https://books-api-iofo.onrender.com/blogs/",
-      requestOptions
-    );
-    const res = await result.json();
-    // setBooks(res);
-    console.log(books);
+
+    try {
+      const response = await fetch(
+        "http://localhost:8082/blogs/",
+        requestOptions
+      );
+      const data = await response.json();
+      getAll(data); // Set the fetched data as the initial books
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
+
   useEffect(() => {
     fetchApi();
   }, []);
@@ -46,7 +50,6 @@ export const Provider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("carts", JSON.stringify(state.carts));
   }, [state.carts]);
-
   //actions
   const fetchCarts = (fetchedCarts) => {
     dispatch({
@@ -54,12 +57,14 @@ export const Provider = ({ children }) => {
       payload: fetchedCarts,
     });
   };
+
   const getAll = (data) => {
     dispatch({
-      type: "GET_BOOK",
+      type: "FETCH_BOOKS",
       payload: data,
     });
   };
+
   const addCart = (id) => {
     dispatch({
       type: "ADD_CART",

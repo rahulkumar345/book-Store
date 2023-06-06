@@ -9,7 +9,7 @@ import image2 from "../assets/book-library-information-wallpaper-preview.jpg";
 const Books = () => {
   const { books, clearSearch, searchedBooks, searchString } =
     useContext(Context);
-
+  console.log(books);
   useEffect(() => {
     const carousel = document.querySelector("#imageCarousel");
     const carouselInstance = new window.bootstrap.Carousel(carousel);
@@ -77,10 +77,21 @@ const Books = () => {
       ></h1>
 
       <div className="row">
-        {searchedBooks.map((book) => {
-          const { id } = book;
-          return <Book key={id} bookDetails={book} />;
-        })}
+        {searchString === null &&
+          books.map((book) => {
+            const { id } = book;
+            return <Book key={id} bookDetails={book} />;
+          })}
+        {searchedBooks.length === 0 ? (
+          <div className="col-12 d-flex justify-content-center">
+            <h2>no results found</h2>
+          </div>
+        ) : (
+          searchedBooks.map((book) => {
+            const { id } = book;
+            return <Book key={id} bookDetails={book} />;
+          })
+        )}
       </div>
     </div>
   );
