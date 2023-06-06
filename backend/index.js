@@ -9,12 +9,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 const PORT = 8082;
-const DB_URI =
-  "mongodb+srv://raoul_kr:Rahul%40123@books.ahztiij.mongodb.net/bookCollection";
+const DB_URI = process.env.URL;
 mongoose
   .connect(`${DB_URI}`)
   .then(() => {
-    console.log("connected to database", DB_URI);
+    console.log("connected to database");
     app.listen(PORT, () => {
       console.log("Listening....", PORT);
     });
