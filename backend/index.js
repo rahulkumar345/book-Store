@@ -9,7 +9,8 @@ const mongoose = require("mongoose");
 
 const app = express();
 const PORT = 8082;
-const DB_URI = "mongodb://127.0.0.1:27017/bookCollection";
+const DB_URI =
+  "mongodb+srv://raoul_kr:Rahul%40123@books.ahztiij.mongodb.net/bookCollection";
 mongoose
   .connect(`${DB_URI}`)
   .then(() => {
