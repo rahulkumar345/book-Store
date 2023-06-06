@@ -13,7 +13,26 @@ export const Context = createContext(initialState);
 
 export const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const fetchApi = () => {};
+
+  const fetchApi = async () => {
+    const headers = {
+      // Define your headers here
+      Authorization: "letMeIn",
+      "Content-Type": "application/json",
+    };
+
+    const requestOptions = {
+      method: "GET",
+      headers: headers,
+    };
+    const result = await fetch("http://localhost:8082/blogs/", requestOptions);
+    const res = await result.json();
+    // setBooks(res);
+    console.log(books);
+  };
+  useEffect(() => {
+    fetchApi();
+  }, []);
   useEffect(() => {
     if (localStorage.getItem("carts") !== null) {
       const fetchedCarts = JSON.parse(localStorage.getItem("carts"));
