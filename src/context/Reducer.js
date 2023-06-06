@@ -39,7 +39,11 @@ export default (state, action) => {
         ...state,
         books: [...state.books, ...action.payload],
       };
-
+    case "EMPTY_CART":
+      return {
+        ...state,
+        carts: [],
+      };
     case "REMOVE_CART":
       return {
         ...state,

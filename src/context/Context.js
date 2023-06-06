@@ -100,6 +100,11 @@ export const Provider = ({ children }) => {
       payload: searchString,
     });
   };
+  const emptyCart = () => {
+    dispatch({
+      type: "EMPTY_CART",
+    });
+  };
 
   const clearSearch = () => {
     dispatch({
@@ -120,6 +125,7 @@ export const Provider = ({ children }) => {
         getSearchString,
         getSearchedBooks,
         clearSearch,
+        emptyCart,
         fetchCarts,
       }}
     >
