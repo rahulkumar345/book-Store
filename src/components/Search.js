@@ -5,7 +5,7 @@ const Search = () => {
   const [keywords, setKeywords] = useState("");
   const { getSearchedBooks, searchString } = useContext(Context);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setKeywords(e.target.value);
     getSearchedBooks(e.target.value);
   };
@@ -22,7 +22,7 @@ const Search = () => {
       style={{ width: "50%" }}
       className="form-control py-4 m-auto"
       type="search"
-      placeholder="e.g. The Prophet"
+      placeholder="e.g. harry potter"
       value={keywords}
     />
   );
