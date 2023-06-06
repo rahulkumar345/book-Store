@@ -25,7 +25,10 @@ export const Provider = ({ children }) => {
       method: "GET",
       headers: headers,
     };
-    const result = await fetch("http://localhost:8082/blogs/", requestOptions);
+    const result = await fetch(
+      "https://books-api-iofo.onrender.com/blogs/",
+      requestOptions
+    );
     const res = await result.json();
     // setBooks(res);
     console.log(books);
@@ -51,7 +54,12 @@ export const Provider = ({ children }) => {
       payload: fetchedCarts,
     });
   };
-
+  const getAll = (data) => {
+    dispatch({
+      type: "GET_BOOK",
+      payload: data,
+    });
+  };
   const addCart = (id) => {
     dispatch({
       type: "ADD_CART",

@@ -33,7 +33,11 @@ export default (state, action) => {
         ...state,
         carts: [...carts],
       };
-
+    case "GET_BOOKS":
+      return {
+        ...state,
+        books: action.payload,
+      };
     case "REMOVE_CART":
       return {
         ...state,

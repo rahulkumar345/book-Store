@@ -12,23 +12,26 @@ const Navbar = () => {
 
   return (
     <div className="bg-white border-bottom sticky-top shadow-sm p-3 px-md-4 mb-3">
-      <div className="container d-flex justify-content-between align-items-center">
-        <Link
-          className="navbar-brand fw-normal text-dark d-flex align-items-center"
-          style={{
-            textDecoration: "none",
-            fontWeight: 500,
-            fontSize: "3rem",
-            fontFamily: "Source Code Pro, monospace",
-          }}
-          to="/"
-        >
-          <img src={bookTemplate} alt="Book Store App" height="100px" />
-          Book Store
-        </Link>
+      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+        <div className="d-flex align-items-center">
+          <Link
+            className="navbar-brand fw-normal text-dark d-flex align-items-center mb-3 mb-md-0"
+            style={{
+              textDecoration: "none",
+              fontWeight: 500,
+              fontSize: "3rem",
+              fontFamily: "Source Code Pro, monospace",
+            }}
+            to="/"
+          >
+            <img src={bookTemplate} alt="Book Store App" height="100px" />
+            Book Store
+          </Link>
+        </div>
 
         {showSearch && <Search />}
-        <div className="d-flex justify-content align-items-center">
+
+        <div className="d-flex align-items-center mt-3 mt-md-0">
           <nav className="ml-auto">
             <Link
               className="nav-link text-dark"
