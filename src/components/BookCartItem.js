@@ -42,14 +42,20 @@ const BookCartItem = ({ cart }) => {
           />
           <button
             style={{ margin: "10px" }}
-            onClick={() => setNewQuantity(newQuantity + 1)}
+            onClick={() => {
+              setNewQuantity(newQuantity + 1);
+              updateCart(id, newQuantity + 1);
+            }}
           >
             +
           </button>
           {newQuantity > 0 && (
             <button
               style={{ margin: "10px" }}
-              onClick={() => setNewQuantity(newQuantity - 1)}
+              onClick={() => {
+                setNewQuantity(newQuantity - 1);
+                updateCart(id, newQuantity - 1);
+              }}
             >
               -
             </button>

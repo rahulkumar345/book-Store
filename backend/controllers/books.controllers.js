@@ -11,7 +11,7 @@ const createNewBlog = async (req, res) => {
   //   console.log(req.body);
   res.status(200).json(result);
 };
-const getAllBlogs = async (req, res) => {
+const getAllBooks = async (req, res) => {
   try {
     const blogs = await BlogServiceInstance.find();
     res.status(200).json(blogs);
@@ -48,7 +48,7 @@ const updateBlogsWithId = async (req, res) => {
 };
 module.exports = {
   createNewBlog: createNewBlog,
-  getAllBlogs: getAllBlogs,
+  getAllBooks: getAllBooks,
   deleteBlogs: deleteBlogs,
   searchBlogs: searchBlogs,
   updateBlogsWithId: updateBlogsWithId,

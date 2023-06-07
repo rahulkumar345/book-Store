@@ -6,7 +6,7 @@ const BookCartCheckOut = () => {
   const { books, carts } = useContext(Context);
   const [totalPrice, setTotalPrice] = useState(0);
   const shippingCost = 5;
-
+  console.log(carts);
   const getSubtotal = (books, carts) => {
     let subtotal = 0;
     carts.forEach((cart) => {
@@ -22,6 +22,9 @@ const BookCartCheckOut = () => {
 
   let subtotal = getSubtotal(books, carts);
   let tempTotal = (parseFloat(subtotal) + shippingCost).toFixed(2);
+  if (subtotal == 0) {
+    tempTotal = 0;
+  }
 
   useEffect(() => {
     setTotalPrice(tempTotal);
@@ -37,10 +40,12 @@ const BookCartCheckOut = () => {
               <td>Subtotal</td>
               <td>${subtotal}</td>
             </tr>
-            <tr>
-              <td>Shipping Cost</td>
-              <td>$0{shippingCost}</td>
-            </tr>
+            {subtotal > 0 && (
+              <tr>
+                <td>Shipping Cost</td>
+                <td>$0{shippingCost}</td>
+              </tr>
+            )}
             <tr className="text-primary h4">
               <td>Total</td>
               <td>${totalPrice}</td>
