@@ -27,7 +27,7 @@ export const Provider = ({ children }) => {
 
     try {
       const response = await fetch(
-        "http://localhost:8082/blogs/",
+        "http://localhost:8082/books/",
         requestOptions
       );
       const data = await response.json();
