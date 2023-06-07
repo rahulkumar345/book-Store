@@ -10,7 +10,7 @@ This Project is a ReactJS application with multiple pages/components, including 
 4. Fetching data from backend api
 5. Managing state using Context API
 6. Using Basic Routing in React
-   7.Implement features such as book search, book filtering, add to cart, remove from cart, and order placement.
+7. Implement features such as book search, book filtering, add to cart, remove from cart, and order placement.
 
 ## Live Application URL
 
